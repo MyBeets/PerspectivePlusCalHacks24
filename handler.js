@@ -18,7 +18,10 @@ $( document ).ready(function() {
                 if (response_data.is_video == false) {
                     document.getElementById("content").innerHTML = response_data.message;
                 } else {
-                    document.getElementById("content").innerHTML = JSON.stringify(response_data.message);
+                    var captionDict = response_data.message；
+                    document.getElementById("content").innerHTML = JSON.stringify(captionDict);
+                    console.log(captionDict)
+
                 }
             },
             error : function(request,error)
