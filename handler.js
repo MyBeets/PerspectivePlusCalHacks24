@@ -1,5 +1,5 @@
 var captionArr = null;
-var dictKeys = null;
+var idx = 0;
 
 $( document ).ready(function() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -23,10 +23,7 @@ $( document ).ready(function() {
                     if (response_data.is_video == false) {
                         document.getElementById("content").innerHTML = response_data.message;
                     } else {
-                        captionArr = response_data.message;
-
-                        document.getElementById("content").innerHTML = JSON.stringify(captionArr);
-                        console.log(captionArr);
+                        captionArr = JSON.parse(response_data.message);
 
                         //listener to do on document update?
                         timechecker(activeTabId);
@@ -51,6 +48,11 @@ async function timechecker(tabID){
     });
     timestamp = convertToSeconds(res[0].result);
     document.getElementById("timestamp").innerHTML = timestamp;
+    while (timestamp > captionArr[idx][0]) {
+        idx += 1;
+    }
+    document.getElementById("content").innerHTML = captionArr[idx][1];
+
 }
 
 function convertToSeconds(timestamp) {
