@@ -13,7 +13,8 @@ $( document ).ready(function() {
             //get captions from server
             $.ajax({ 
                 type: "GET",
-                url: "https://perspective-plus-337f21f44542.herokuapp.com/captions", 
+                //url: "https://perspective-plus-337f21f44542.herokuapp.com/captions", 
+                url: "http://127.0.0.1:5000/captions", 
                 data: "id=" + activeTab.url,
                 dataType: "json",
 
@@ -51,7 +52,10 @@ async function timechecker(tabID){
     while (timestamp > captionArr[idx][0]) {
         idx += 1;
     }
-    document.getElementById("content").innerHTML = captionArr[idx][1];
+    document.getElementById("caption").innerHTML = captionArr[idx][1];
+    if (captionArr.length > 2) {
+        document.getElementById("content").innerHTML = captionArr[idx][2];
+    } 
     timechecker(tabID)
 }
 
