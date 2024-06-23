@@ -52,8 +52,7 @@ async function timechecker(tabID){
         idx += 1;
     }
     document.getElementById("content").innerHTML = captionArr[idx][1];
-    setTimeout(timechecker(tabID, 2000));
-
+    timechecker(tabID)
 }
 
 function convertToSeconds(timestamp) {
