@@ -4,7 +4,7 @@
   "description": "YouTube video side panel",
   "version": "1.0",
   "action": {
-    "default_icon": "hello_extensions.png",
+    "default_icon": "logo.png",
     "default_title": "Click to open panel"
   },
   "permissions": [
