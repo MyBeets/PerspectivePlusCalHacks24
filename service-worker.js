@@ -24,7 +24,7 @@ async function sidePanelDisplay(tab, tabId) {
   if (!tab.url) return;
   const url = new URL(tab.url);
   // Enables the side panel on google.com
-  if (url.origin === YOUTUBE_ORIGIN) {
+  if (url.contains(YOUTUBE_ORIGIN)) {
     await chrome.sidePanel.setOptions({
       tabId,
       path: 'index.html',
